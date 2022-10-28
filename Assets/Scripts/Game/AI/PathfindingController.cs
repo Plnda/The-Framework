@@ -5,15 +5,17 @@ using Pathfinding;
     
 namespace Game.AI
 {
+    [RequireComponent(typeof(IAstarAI))]
     public class PathfindingController: MonoBehaviour
     {
-        private IAstarAI _ai;
+        private RichAI _ai;
 
         public float velocity => _ai.velocity.normalized.magnitude;
+        public bool pathfindingReady =>(_ai.reachedEndOfPath || !_ai.hasPath);
 
-        private void Start()
+        private void Awake()
         {
-            _ai = GetComponent<IAstarAI>();
+            _ai = GetComponent<RichAI>();
         }
 
         private void Update()
@@ -23,12 +25,23 @@ namespace Game.AI
 
         private void HandlePathfinding()
         {
-            if (!_ai.pathPending && (_ai.reachedEndOfPath || !_ai.hasPath))
+            if (pathfindingReady && !_ai.pathPending)
             {
                 _ai.SearchPath();
             }
         }
 
+        public void SetRotation(Quaternion rotation)
+        {
+            transform.rotation = rotation;
+            _ai.rotation = rotation;
+        }
+
+        public void SetStopRange(float range)
+        {
+            _ai.endReachedDistance = range;
+        }
+        
         public void Move(Vector3 position)
         {
             _ai.destination = position;
