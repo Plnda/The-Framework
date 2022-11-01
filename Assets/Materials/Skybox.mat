@@ -105,14 +105,14 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DirectionPitch: 0.395
-    - _DirectionYaw: 0
+    - _DirectionYaw: 0.959
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Exponent: 0.47
+    - _Exponent: 0.44
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Intensity: 1.51
+    - _Intensity: 0.97
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005

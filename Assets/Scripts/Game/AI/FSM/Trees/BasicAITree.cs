@@ -1,29 +1,29 @@
 using System.Collections.Generic;
 using Game.AI.FSM.States;
-using Game.Controller;
+using Game.Gameplay;
 
 namespace Game.AI.FSM.Trees
 {
     public class BasicAITree : FSMStateTree
     {
-        public BasicAITree(PathfindingController controller, AIController aiController)
+        public BasicAITree(PathfindingBehaviour behaviour, AIBehaviour aiController)
         {
-            _controller = controller;
+            Behaviour = behaviour;
             _aiController = aiController;
             
             _states = new List<FSMState>()
             {
                 new PatrolState(
-                    _controller, 
+                    Behaviour, 
                     _aiController, 
                     15.0f
                 ),
                 new ChaseState(
-                    _controller, 
+                    Behaviour, 
                     _aiController
                 ),
                 new AttackState(
-                    _controller, 
+                    Behaviour, 
                     _aiController
                 )
             };

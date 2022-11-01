@@ -25,6 +25,14 @@ MonoBehaviour:
     m_Address: Assets/Scenes/HUD.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: df6885b13dec8be4582be8c2c2219da2
+    m_Address: Assets/External Assets/KriptoFX/MuzzleFlashes/Prefab/Impacts/DirtImpact.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 297d9fbca81581e46b6c6f1312b270e6
+    m_Address: Assets/Dependencies/DirtImpact.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0816cf8d688b4214497ebe369194a6fe, type: 2}
   m_SchemaSet:

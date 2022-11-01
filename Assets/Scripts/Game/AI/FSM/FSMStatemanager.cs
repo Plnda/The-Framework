@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Game.AI.FSM.States;
-using Game.Controller;
 using UnityEngine;
 
 namespace Game.AI.FSM

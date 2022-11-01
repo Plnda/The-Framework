@@ -1,35 +1,37 @@
-using Game.Controller;
+using Game.Gameplay;
+using UnityEngine;
 
 namespace Game.AI.FSM.States
 {
     public class AttackState: FSMState
     {
         public AttackState(
-            PathfindingController controller, 
-            AIController aiController
-        ) : base("Attack State", controller, aiController) { }
+            PathfindingBehaviour behaviour, 
+            AIBehaviour aiBehaviour
+        ) : base("Attack State", behaviour, aiBehaviour) { }
 
 
         public override bool CanEnterState()
         {
-            return _aiController.visibleEnemy && 
-                   _aiController.distanceFromVisibleEnemy <= _aiController.rangeDistance;
+            return _aiBehaviour.visibleEnemy && 
+                   _aiBehaviour.distanceFromVisibleEnemy <= _aiBehaviour.rangeDistance;
         }
 
         public override void RunState()
         {
-            var visibleEnemy = _aiController.visibleEnemy;
+            var visibleEnemy = _aiBehaviour.visibleEnemy;
 
             if (visibleEnemy == null)
             {
                 return;
             }
             
-            _controller.Move(visibleEnemy.transform.position);
+            _behaviour.Move(visibleEnemy.transform.position);
 
-            if (_controller.velocity < 0.001f)
+            if (Mathf.Approximately(_behaviour.velocity, 0))
             {
-                _aiController.RotateTowards(visibleEnemy.transform);
+                _behaviour.RotateTowards(visibleEnemy.transform.position);
+                _aiBehaviour.Shoot(visibleEnemy.transform.position);
             }
         }
     }

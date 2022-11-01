@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d41e28ec4194f5b84c6a3b17bcaca92, type: 3}
   m_Name: Game
   m_EditorClassIdentifier: 
-  _sceneAssets: []
+  _sceneAssets:
+  - {fileID: 11400000, guid: 297d9fbca81581e46b6c6f1312b270e6, type: 2}
   _sceneReference:
     m_AssetGUID: 41e6fa13bdbb3a14ab2e4af8cb364903
     m_SubObjectName: 

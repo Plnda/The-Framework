@@ -8,6 +8,11 @@ namespace Framework.DI
     {
         protected virtual void Awake()
         {
+            if (ServiceManager.shared == null)
+            {
+                return;
+            }
+            
             ServiceManager.shared.Resolve(gameObject);
         }
 

@@ -1,4 +1,4 @@
-using Game.Controller;
+using Game.Gameplay;
 
 namespace Game.AI.FSM.States
 {
@@ -7,30 +7,30 @@ namespace Game.AI.FSM.States
         private float _radius;
         
         public PatrolState(
-            PathfindingController controller, 
-            AIController aiController, 
+            PathfindingBehaviour behaviour, 
+            AIBehaviour aiBehaviour, 
             float radius
-        ) : base("Patrol State", controller, aiController) {
+        ) : base("Patrol State", behaviour, aiBehaviour) {
             
             _radius = radius;
         }
 
         public override bool CanEnterState()
         {
-            return _controller.pathfindingReady && _aiController.visibleEnemy == null;
+            return _behaviour.pathfindingReady && _aiBehaviour.visibleEnemy == null;
         }
 
         public override void RunState()
         {
-            if (_aiController.visibleEnemy != null)
+            if (_aiBehaviour.visibleEnemy != null)
             {
                 return;
             }
             
-            _controller.SetStopRange(0.5f);
+            _behaviour.SetStopRange(0.5f);
             
-            var destination = _aiController.GetPatrolDestination();
-            _controller.Move(destination);
+            var destination = _aiBehaviour.GetPatrolDestination();
+            _behaviour.Move(destination);
         }
     }
 }

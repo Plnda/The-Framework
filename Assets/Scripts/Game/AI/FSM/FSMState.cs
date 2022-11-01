@@ -1,19 +1,19 @@
-using Game.Controller;
+using Game.Gameplay;
 
 namespace Game.AI.FSM
 {
     public abstract class FSMState
     {
-        protected PathfindingController _controller;
-        protected AIController _aiController;
+        protected PathfindingBehaviour _behaviour;
+        protected AIBehaviour _aiBehaviour;
         
         public string name { get; }
 
-        protected FSMState(string name, PathfindingController controller, AIController aiController)
+        protected FSMState(string name, PathfindingBehaviour behaviour, AIBehaviour aiBehaviour)
         {
             this.name = name;
-            _controller = controller;
-            _aiController = aiController;
+            _behaviour = behaviour;
+            _aiBehaviour = aiBehaviour;
         }
 
         public virtual bool CanEnterState()

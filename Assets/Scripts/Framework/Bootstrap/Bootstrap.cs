@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Framework;
+using Framework.DI;
 using Framework.Levels;
 using Framework.Scenes;
 using Framework.Services;
@@ -10,7 +11,7 @@ using UnityEngine.Events;
 
 namespace Bootstrap
 {
-    public abstract class Bootstrap: MonoBehaviour
+    public abstract class Bootstrap: DependencyBehaviour
     {
         private bool _isBooted;
         private bool _isStarted;
@@ -49,6 +50,7 @@ namespace Bootstrap
 
         private void Awake()
         {
+            RegisterSelf(true);
             ServiceManager.shared.Resolve(gameObject);
             OnAwake();
         }
